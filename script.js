@@ -27,7 +27,6 @@ function getEventTarget(e){
 ul.onclick = function(event){
 	var target = getEventTarget(event);
 	target.classList.toggle("done");
-	
 }
 
 
