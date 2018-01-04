@@ -8,12 +8,13 @@ var items = ul.getElementsByTagName("li");
 
 //add event listener to first 6 btns in HTML file
 for(var i = 0; i < deleteBtns.length; i++){
-	deleteBtns[i].addEventListener("click", removeParent);
+	deleteBtns[i].addEventListener("click", removeParent, false);
 }
 
 
 //from StackOverflow:
 function removeParent(evt) {
+  evt.target.removeEventListener("click", removeParent, false);
   evt.target.parentNode.remove();
 }
 
