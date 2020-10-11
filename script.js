@@ -19,11 +19,22 @@ function removeParent(evt) {
 }
 
 //click on a list item and it strikethroughs the text
-function getEventTarget(e){
-	e = e || window.event;
-	return e.target || e.srcElement;
-}
+function lineThrough(event){
+	var a=event.target;
+	
+	if(count==0)
+	{
+		
+	    a.classList.add("done");
+	}
+	else
+	{
+		a.classList.toggle("done");
+	}
+	count++;
 
+
+}
 
 ul.onclick = function(event){
 	var target = getEventTarget(event);
