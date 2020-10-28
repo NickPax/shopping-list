@@ -1,45 +1,23 @@
 var button = document.getElementById("enter");
-var input = document.getElementById("userInput");
-var ul = document.querySelector("ul")
+var input = document.getElementById("userinput");
+var ul = document.querySelector("ul");
 var deleteBtns = document.getElementsByClassName("delete");
 var items = ul.getElementsByTagName("li");
 
-
-
-//add event listener to first 6 btns in HTML file
-for(var i = 0; i < deleteBtns.length; i++){
-	deleteBtns[i].addEventListener("click", removeParent, false);
+if(deleteBtns.length > 0){
+    for(var i = 0; i < deleteBtns.length; i++){
+        deleteBtns[i].addEventListener("click", removeParent);
+    }
 }
 
-
-//from StackOverflow:
 function removeParent(evt) {
-  evt.target.removeEventListener("click", removeParent, false);
+  evt.target.removeEventListener("click", removeParent);
   evt.target.parentNode.remove();
 }
 
-//click on a list item and it strikethroughs the text
-function lineThrough(event){
-	var a=event.target;
-	
-	if(count==0)
-	{
-		
-	    a.classList.add("done");
-	}
-	else
-	{
-		a.classList.toggle("done");
-	}
-	count++;
-
-
-}
-
-ul.onclick = function(event){
-	var target = getEventTarget(event);
-	target.classList.toggle("done");
-}
+ul.addEventListener("click", function(event){
+	event.target.classList.toggle("done");
+});
 
 
 //adding new items:
@@ -65,8 +43,8 @@ function createListElement() {
 
 function addToListAfterClick(){
 	if(inputLength() > 0){
-			createListElement();
-		}
+		createListElement();
+	}
 }
 
 function addToListAfterKeypress(event){
@@ -79,22 +57,6 @@ function addToListAfterKeypress(event){
 button.addEventListener("click", addToListAfterClick);
 
 input.addEventListener("keypress", addToListAfterKeypress);
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
